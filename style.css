@@ -1,0 +1,364 @@
+/* --- VARIABLES GLOBALES ET RESET --- */
+:root {
+    --couleur-primaire: #0D244F; /* Bleu marine foncé */
+    --couleur-secondaire: #1a3a7b; /* Bleu moyen */
+    --couleur-fond: #f4f7f6;     /* Gris très clair */
+    --couleur-texte: #333333;
+    --couleur-blanc: #ffffff;
+    --couleur-ombre: rgba(0, 0, 0, 0.1);
+    
+    --danger-rouge: #d32f2f;
+    --danger-jaune: #fbc02d;
+    --danger-bleu: #1976d2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--couleur-texte);
+    background-color: var(--couleur-fond);
+}
+
+/* --- PAGE DE CONNEXION (index.html) --- */
+.body-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--couleur-primaire);
+}
+
+.login-container {
+    background: var(--couleur-blanc);
+    padding: 2.5rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.login-logo {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 1.5rem;
+}
+
+.login-form h1 {
+    font-size: 1.5rem;
+    color: var(--couleur-primaire);
+    margin-bottom: 0.5rem;
+}
+
+.login-form p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.form-groupe {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.form-groupe label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-groupe input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.bouton-login {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--couleur-blanc);
+    background-color: var(--couleur-secondaire);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bouton-login:hover {
+    background-color: var(--couleur-primaire);
+}
+
+.login-error-message {
+    color: var(--danger-rouge);
+    margin-top: 1rem;
+    height: 20px; /* Pour éviter le décalage */
+    font-weight: bold;
+}
+
+/* --- PAGE DE RECHERCHE (recherche.html) --- */
+
+.body-app {
+    background-color: var(--couleur-fond);
+}
+
+.header-app {
+    background-color: var(--couleur-primaire);
+    color: var(--couleur-blanc);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px var(--couleur-ombre);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+}
+
+.header-app h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.bouton-logout {
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-blanc);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bouton-logout:hover {
+    background-color: #d32f2f; /* Rouge déconnexion */
+}
+
+.container-app {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.barre-recherche {
+    margin-bottom: 1rem;
+}
+
+#recherche-input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+#recherche-input:focus {
+    outline: none;
+    border-color: var(--couleur-secondaire);
+}
+
+#compteur-resultats {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.message-initial, .message-erreur {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #777;
+    padding: 2rem;
+    background: var(--couleur-blanc);
+    border-radius: 6px;
+}
+.message-erreur {
+    color: var(--danger-rouge);
+    font-weight: bold;
+}
+
+/* --- DESIGN DES FICHES DE RÉSULTAT --- */
+
+.fiche-resultat {
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--couleur-blanc);
+    box-shadow: 0 2px 5px var(--couleur-ombre);
+    transition: all 0.3s ease;
+}
+
+/* Bordure latérale de couleur */
+.fiche-resultat.rouge { border-left: 10px solid var(--danger-rouge); }
+.fiche-resultat.jaune { border-left: 10px solid var(--danger-jaune); }
+.fiche-resultat.bleu { border-left: 10px solid var(--danger-bleu); }
+
+/* En-tête réduite (cliquable) */
+.fiche-header-reduit {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fdfdfd;
+}
+
+.fiche-header-reduit:hover {
+    background: #f9f9f9;
+}
+
+.fiche-nom {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--couleur-primaire);
+    flex: 2;
+}
+
+.fiche-type-reduit, .fiche-danger-reduit {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin-left: 1rem;
+    flex: 1;
+    text-align: center;
+}
+
+.fiche-type-reduit {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.fiche-danger-reduit {
+    font-weight: bold;
+}
+.rouge .fiche-danger-reduit { background: #ffebee; color: var(--danger-rouge); }
+.jaune .fiche-danger-reduit { background: #fffde7; color: #f57f17; }
+.bleu .fiche-danger-reduit { background: #e3f2fd; color: var(--danger-bleu); }
+
+.fiche-toggle-icon {
+    font-size: 1.5rem;
+    color: #777;
+    margin-left: 1rem;
+}
+
+/* Détails complets (la "fiche papier") */
+.fiche-details-complet {
+    padding: 2rem;
+    border-top: 1px solid #eee;
+    background: var(--couleur-blanc);
+    position: relative; /* Pour le filigrane */
+}
+
+/* Logique d'affichage */
+.fiche-resultat.collapsed .fiche-details-complet {
+    display: none;
+}
+.fiche-resultat.expanded {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Filigrane "Confidentiel" */
+.fiche-details-complet::after {
+    content: "CONFIDENTIEL";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 6rem;
+    font-weight: bold;
+    color: rgba(244, 72, 72, 0.08);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Tout le contenu est au-dessus du filigrane */
+.fiche-officielle-header, .fiche-section-identite, .fiche-section-signalement, .bouton-annexe {
+    position: relative;
+    z-index: 2;
+}
+
+.fiche-officielle-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--couleur-primaire);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+.fiche-logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 1.5rem;
+}
+.fiche-officielle-header h2 {
+    color: var(--couleur-primaire);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.fiche-officielle-header h3 {
+    color: #444;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.fiche-section-identite, .fiche-section-signalement {
+    margin-bottom: 2rem;
+}
+.fiche-section-identite h4, .fiche-section-signalement h4 {
+    font-size: 1.1rem;
+    color: var(--couleur-primaire);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.fiche-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.fiche-grid p, .fiche-section-signalement p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.fiche-grid p strong, .fiche-section-signalement p strong {
+    display: inline-block;
+    min-width: 130px;
+    color: #555;
+    font-weight: 600;
+}
+
+.bouton-annexe {
+    display: inline-block;
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-blanc);
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.bouton-annexe:hover {
+    background-color: var(--couleur-primaire);
+}

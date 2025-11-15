@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPR - Accès Sécurisé</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-login">
+    
+    <div class="login-container">
+        <form id="login-form" class="login-form">
+            <img src="assets/logo_fpr.png" alt="Logo Officiel" class="login-logo" width=1000 height=1000>
+            <h1>Fichier des Personnes Recherchées</h1>
+            <p>Veuillez entrer votre code d'accès pour continuer.</p>
+            
+            <div class="form-groupe">
+                <label for="access-code">Code d'accès</label>
+                <input type="password" id="access-code" required>
+            </div>
+            
+            <button type="submit" class="bouton-login">Connexion</button>
+            <p id="login-error" class="login-error-message"></p>
+        </form>
+    </div>
+
+    <script src="fpr.js"></script>
+</body>
+</html>

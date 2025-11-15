@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPR - Recherche</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-app">
+
+    <header class="header-app">
+        <div class="header-content">
+            <img src="assets/logo_fpr.png" alt="Logo" class="header-logo">
+            <h1>Fichier des personnes recherchées (FPR)</h1>
+        </div>
+        <button id="logout-btn" class="bouton-logout">Déconnexion</button>
+    </header>
+
+    <main class="container-app">
+        <div class="barre-recherche">
+            <input type="text" id="recherche-input" placeholder="Rechercher par Nom, Prénom, Pseudo...">
+        </div>
+        <div id="compteur-resultats"></div>
+        
+        <div id="resultats-container">
+            <p class="message-initial">Veuillez lancer une recherche pour afficher les fiches.</p>
+        </div>
+    </main>
+
+    <script src="fpr.js"></script>
+</body>
+</html>
